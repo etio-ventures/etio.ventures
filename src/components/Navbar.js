@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 
 const navigation = [
     {name: 'Home', href: '/'},
+    {name: 'About Us', href: '/about-us'}
 ]
 
 export default function Navbar() {

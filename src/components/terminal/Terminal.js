@@ -1,9 +1,6 @@
 import {useEffect, useRef, useState} from 'react'
 import validator from 'validator';
 
-// Handlers
-import scrollHistory from './handlers/scrollHistory'
-
 // Utils
 import commandExists from './utils/commandExists'
 import constructEcho from './utils/constructEcho'
@@ -52,12 +49,13 @@ export default function Terminal(props) {
  +--------------------------------------------------------------------------------------------------
  | CONNECTED FROM: [undisclosed]
  +--------------------------------------------------------------------------------------------------
- | Thank you for your continued support as a valuable employee of ETIO. We appreciate you.
+ | Thank you for your continued support and for being a valuable employee of ETIO. We appreciate you.
  | A corporate representative will be dispatched to your current location of [undisclosed].
  | -------------------------------------------------------------------------------------------------
  | *** NOTICE: ALL OF OUR AVAILABLE REPRESENTATIVES ARE CURRENTLY BUSY ASSISTING OTHER EMPLOYEES ***
  | -------------------------------------------------------------------------------------------------
- | Your concerns are meaningful to us. The next representative will be available in 124770124981271895 blocks.
+ | Your concerns are meaningful to us. Please stay connected to speak with the next available
+ | representative. A representative will be available in [1247138952] blocks or [474.55] years.
  +--------------------------------------------------------------------------------------------------
 `
                 pushToStdout(message)
@@ -101,6 +99,7 @@ export default function Terminal(props) {
                 }
 
                 try {
+                    // eslint-disable-next-line no-unused-vars
                     const docRef = await addDoc(collection(db, "subscribers"), {
                         email: args[0] // This is horribly hacky
                     });
@@ -179,14 +178,11 @@ export default function Terminal(props) {
         },
     }
 
-    const {noDefaults, ignoreCommandCase, welcomeMessage} = props;
-
     const [PS1, setPS1] = useState('0x0000000000000000000000000000000000000000')
     const [commands, setCommands] = useState(my_commands);
     const [stdOut, setStdOut] = useState([])
     const [history, setHistory] = useState([])
     const [historyPosition, setHistoryPosition] = useState(null)
-    const [previousHistoryPosition, setPreviousHistoryPosition] = useState(null)
     const [isProcessing, setIsProcessing] = useState(false)
 
     const contentRef = useRef(null)
@@ -249,7 +245,7 @@ export default function Terminal(props) {
         pushToHistory(rawInput)
 
         // Show the command, like a real terminal
-        pushToStdout(constructEcho(PS1 || '☤ $', rawInput, props), {isEcho: true})
+        pushToStdout(constructEcho(PS1 || ' $', rawInput, props), {isEcho: true})
 
         if (rawInput) {
             const input = rawInput.split(' ')
@@ -283,22 +279,10 @@ export default function Terminal(props) {
     }
 
     const handleInput = event => {
-        const historyOptions = {
-            history,
-            historyPosition,
-            previousHistoryPosition,
-            terminalInput: promptRef
-        }
         switch (event.key) {
             case 'Enter':
                 processCommand();
                 break
-            // case 'ArrowUp':
-            //     scrollHistory('up', historyOptions)
-            //     break
-            // case 'ArrowDown':
-            //     scrollHistory('down', historyOptions)
-            //     break
             default:
         }
     }
@@ -308,20 +292,24 @@ export default function Terminal(props) {
         if (!isActive) {
             const message = `
  +--------------------------------------------------------------
- | Welcome advocate to the ETIO.ventures IntraPlaNet
- +--------------------------------------------------------------
- +-------------------------------------------------------------+            
+ | Welcome, Advocate to the ETIO Network
  | CONNECTED FROM: [undisclosed]
  +--------------------------------------------------------------            
  |  mmmmmmmmmmmmm mmmmm   mmmm 
  |  #        #      #    m"  "m
  |  #mmmmm   #      #    #    #
  |  #        #      #    #    #
- |  #mmmmm   #    mm#mm   #mm# 
+ |  #mmmmm   #    mm#mm   #mm#  .network 
  +--------------------------------------------------------------
  | Please connect to your corporate advocacy account by typing
  | "connect" or type "help" to see all commands available.
  +--------------------------------------------------------------
+ |                       !!! NOTE !!!
+ | Many terminals are still being upgraded for handheld viewing.
+ | We at ETIO recommend using a Personal Computer for interacting
+ | with the ETIO Advocacy Terminal until our live representatives
+ | are able to upgrade the interface.
+ +---------------------------------------------------------------
 `
             pushToStdout(message)
         }
@@ -330,7 +318,7 @@ export default function Terminal(props) {
     }, [])
 
     useEffect(() => {
-        return account ? setPS1(`${account} @ [advocate: TIER 0] ☤`) : setPS1('0x0000000000000000000000000000000000000000 @ [undisclosed] ☤')
+        return account ? setPS1(`${account} @ [advocate: TIER 0] $`) : setPS1('0x0000000000000000000000000000000000000000 @ [undisclosed] $')
     }, [account])
 
     return (

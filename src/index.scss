@@ -1,43 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import './theme.css';
 @import url('https://fonts.googleapis.com/css2?family=Flow+Circular&family=Libre+Barcode+128&family=Libre+Barcode+128+Text&family=Noto+Sans+JP:wght@400;900&family=Permanent+Marker&family=Press+Start+2P&family=Redacted&family=Rock+Salt&family=Rubik:ital,wght@1,500;1,900&family=Sedgwick+Ave+Display&family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Iceland&family=Noto+Sans+Egyptian+Hieroglyphs&family=Oxanium:wght@500&family=Reenie+Beanie&family=Single+Day&display=swap');
 
-.bg-feature {
-  background-color: #ffffff;
-  background-image: url("data:image/svg+xml,%3Csvg width='84' height='48' viewBox='0 0 84 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h12v6H0V0zm28 8h12v6H28V8zm14-8h12v6H42V0zm14 0h12v6H56V0zm0 8h12v6H56V8zM42 8h12v6H42V8zm0 16h12v6H42v-6zm14-8h12v6H56v-6zm14 0h12v6H70v-6zm0-16h12v6H70V0zM28 32h12v6H28v-6zM14 16h12v6H14v-6zM0 24h12v6H0v-6zm0 8h12v6H0v-6zm14 0h12v6H14v-6zm14 8h12v6H28v-6zm-14 0h12v6H14v-6zm28 0h12v6H42v-6zm14-8h12v6H56v-6zm0-8h12v6H56v-6zm14 8h12v6H70v-6zm0 8h12v6H70v-6zM14 24h12v6H14v-6zm14-8h12v6H28v-6zM14 8h12v6H14V8zM0 8h12v6H0V8z' fill='%23f4f4f5' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E");
+
+#root {
+  @apply h-screen bg-black;
+  font-family: 'Oxanium', cursive;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-  monospace;
-}
-
-.bg-main {
-  @apply bg-tungsten;
-}
-
-.contact {
-  @apply bg-neutral text-white;
-
-  .overlay {
-    @apply bg-neutral absolute inset-0 mix-blend-multiply;
-  }
-
-  .text-container {
-    @apply relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8;
-  }
-
-  .headline {
-    @apply text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl;
-  }
-
-  .text {
-    @apply mt-6 text-xl max-w-3xl;
-  }
-}
-
+/* Navbar */
 .navbar {
   @apply bg-neutral;
 }
@@ -47,6 +20,35 @@ code {
   &:hover {
     @apply text-gray-700;
   }
+}
+
+/* WalletButton.js - Not committed yet */
+.sign-in-button {
+  @apply inline-block py-2 px-4 rounded-md text-base font-medium text-primary hover:bg-opacity-75
+}
+
+/* AboutUs.js */
+.prose {
+  h2 {
+    @apply text-white;
+  }
+
+  blockquote {
+    @apply text-white;
+  }
+
+  #investment-sectors li {
+    @apply m-0;
+  }
+}
+
+/* Utilities */
+.font-oxanium {
+  font-family: 'Oxanium', cursive;
+}
+
+.font-iceland {
+  font-family: 'Iceland', cursive;
 }
 
 .hoverable {
@@ -65,10 +67,28 @@ code {
   cursor: pointer;
 }
 
-.sign-in-button {
-  @apply inline-block py-2 px-4 rounded-md text-base font-medium text-primary hover:bg-opacity-75
+/* Top Section Home Page */
+.contact {
+  @apply bg-neutral text-white;
+
+  .overlay {
+    @apply bg-neutral absolute inset-0 mix-blend-multiply;
+  }
+
+  .text-container {
+    @apply relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8;
+  }
+
+  .headline {
+    @apply text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl;
+  }
+
+  .text {
+    @apply mt-6 text-2xl max-w-3xl;
+  }
 }
 
+/* CallToAction.js - currently unused */
 .call-to-action {
   @apply bg-secondary;
   @apply inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white;
@@ -81,23 +101,9 @@ code {
   }
 }
 
+/* Console.js -> Terminal.js */
 #output {
   @apply bg-black h-screen mb-2 text-green-500;
-}
-
-//.prompt {
-//  bottom: 0;
-//  position: fixed;
-//  width: 100%;
-//}
-
-//.command {
-//  @apply text-green-500;
-//  @apply block w-full pl-10 sm:text-sm ring-0 bg-black;
-//}
-
-#root {
-  @apply h-screen bg-black;
 }
 
 .terminal {
@@ -112,7 +118,6 @@ code {
   &::-webkit-scrollbar {
     display: none;
   }
-
   /* End: Hiding Scrollbar */
 
   .content {
@@ -130,4 +135,10 @@ code {
   .input {
     @apply ring-0 border-none outline-none py-0 pl-2.5 grow;
   }
+}
+
+/* Unused */
+.bg-feature {
+  background-color: #ffffff;
+  background-image: url("data:image/svg+xml,%3Csvg width='84' height='48' viewBox='0 0 84 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h12v6H0V0zm28 8h12v6H28V8zm14-8h12v6H42V0zm14 0h12v6H56V0zm0 8h12v6H56V8zM42 8h12v6H42V8zm0 16h12v6H42v-6zm14-8h12v6H56v-6zm14 0h12v6H70v-6zm0-16h12v6H70V0zM28 32h12v6H28v-6zM14 16h12v6H14v-6zM0 24h12v6H0v-6zm0 8h12v6H0v-6zm14 0h12v6H14v-6zm14 8h12v6H28v-6zm-14 0h12v6H14v-6zm28 0h12v6H42v-6zm14-8h12v6H56v-6zm0-8h12v6H56v-6zm14 8h12v6H70v-6zm0 8h12v6H70v-6zM14 24h12v6H14v-6zm14-8h12v6H28v-6zM14 8h12v6H14V8zM0 8h12v6H0V8z' fill='%23f4f4f5' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E");
 }

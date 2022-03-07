@@ -1,13 +1,19 @@
 import Navbar from "../components/Navbar";
-import ContactUs from "../components/ContactUs";
-import CallToAction from "../components/CallToAction";
+import Synopsis from "../components/Synopsis";
+import Stats from "../components/Stats";
+import Footer from "../components/Footer";
+import FAQs from "../components/FAQs";
+import CompanyList from "../components/CompanyList";
 
 export default function Home() {
     return (
         <div>
             <Navbar/>
-            <ContactUs/>
-            <CallToAction/>
+            <Synopsis/>
+            <Stats/>
+            <FAQs/>
+            <CompanyList/>
+            <Footer/>
         </div>
     )
 }
