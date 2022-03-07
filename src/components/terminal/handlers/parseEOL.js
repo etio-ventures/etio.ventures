@@ -1,4 +1,4 @@
-export default stdout => {
+const stdout = () => {
   const parsedStdout = []
 
   for (let i = 0; i < stdout.length; i++) {
@@ -17,3 +17,5 @@ export default stdout => {
 
   return parsedStdout
 }
+
+export default stdout();

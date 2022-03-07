@@ -3,7 +3,7 @@
  * @param promptLabel - Prompt label element
  * @param rawInput - Raw command input
  */
-export default (promptLabel, rawInput) => {
+const constructEcho = (promptLabel, rawInput) => {
   return (
     <div>
       <span>{promptLabel} </span>
@@ -11,3 +11,5 @@ export default (promptLabel, rawInput) => {
     </div>
   )
 }
+
+export default constructEcho;

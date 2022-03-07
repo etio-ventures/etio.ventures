@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState} from 'react'
+import {useCallback, useEffect, useRef, useState} from 'react'
 import validator from 'validator';
 
 // Handlers
@@ -10,11 +10,12 @@ import constructEcho from './utils/constructEcho'
 import useBlockchain from "../../contexts/Blockchain";
 import parseEOL from "./handlers/parseEOL";
 import {Navigate} from 'react-router'
-import { collection, addDoc } from "firebase/firestore";
+import {collection, addDoc} from "firebase/firestore";
 import db from '../../firebase';
 
 export default function Terminal(props) {
-    const {isActive, account, connect, disconnect} = useBlockchain();
+    //const {isActive, account, connect, disconnect} = useBlockchain();
+    const {account, connect, disconnect} = useBlockchain();
 
     const my_commands = {
         help: {
@@ -27,8 +28,8 @@ export default function Terminal(props) {
  +----------------------------------------------------+
 `
                 pushToStdout(message)
-                for (const c in commands) {
-                    const cmdObj = commands[c]
+                for (const c in my_commands) {
+                    const cmdObj = my_commands[c]
                     const usage = cmdObj.usage ? `${cmdObj.usage}` : ''
                     pushToStdout(` | ${c}: ${usage} - ${cmdObj.description}`)
                 }
@@ -67,14 +68,14 @@ export default function Terminal(props) {
             description: 'Disconnect and exit the terminal.',
             usage: 'logout',
             fn: async (...args) => {
-                await commands['disconnect'].fn(...args)
+                await my_commands['disconnect'].fn(...args)
                 //todo: This is a memory leak due to "disconnect" not finishing before the navigation dumps the component
                 return <Navigate to={'/'}/>
             }
         },
         email: {
             description: 'Leave your email to be contacted about passport availability.',
-            usage: 'email <string: email>',
+            usage: 'email < string: email>',
             fn: async (...args) => {
                 if (!validator.isEmail(args[0])) {
                     pushToStdout('Please use a valid email address.')
@@ -101,7 +102,7 @@ export default function Terminal(props) {
                 }
 
                 try {
-                    const docRef = await addDoc(collection(db, "subscribers"), {
+                    await addDoc(collection(db, "subscribers"), {
                         email: args[0] // This is horribly hacky
                     });
                     pushToStdout(`
@@ -179,14 +180,12 @@ export default function Terminal(props) {
         },
     }
 
-    const {noDefaults, ignoreCommandCase, welcomeMessage} = props;
-
     const [PS1, setPS1] = useState('0x0000000000000000000000000000000000000000')
-    const [commands, setCommands] = useState(my_commands);
+    //const [commands, setCommands] = useState(my_commands);
     const [stdOut, setStdOut] = useState([])
     const [history, setHistory] = useState([])
     const [historyPosition, setHistoryPosition] = useState(null)
-    const [previousHistoryPosition, setPreviousHistoryPosition] = useState(null)
+    // const [previousHistoryPosition, setPreviousHistoryPosition] = useState(null)
     const [isProcessing, setIsProcessing] = useState(false)
 
     const contentRef = useRef(null)
@@ -219,11 +218,11 @@ export default function Terminal(props) {
      *  isEcho: For distinguishing echo messages (Exemption from message styling)
      * }
      */
-    const pushToStdout = (message, options) => {
+    const pushToStdout = useCallback((message, options) => {
         stdOut.push({message, isEcho: options?.isEcho || false})
-        if (options?.rawInput) pushToHistory(options.rawInput)
+        //if (options?.rawInput) pushToHistory(options.rawInput)
         setStdOut(stdOut)
-    }
+    }, [stdOut])
 
     /**
      * @param {String} rawInput Raw command input from the terminal
@@ -239,7 +238,9 @@ export default function Terminal(props) {
     }
 
     const processCommand = async () => {
-        setIsProcessing(true)
+        if (!isProcessing) {
+            setIsProcessing(true)
+        }
 
         // Initialise command result object
         const commandResult = {command: null, args: [], rawInput: null, result: null}
@@ -260,13 +261,13 @@ export default function Terminal(props) {
             commandResult.command = rawCommand
             commandResult.args = args
 
-            const {exists, command} = commandExists(commands, rawCommand, props.ignoreCommandCase)
+            const {exists, command} = commandExists(my_commands, rawCommand, props.ignoreCommandCase)
 
             if (!exists) {
                 //todo: Do I need a second arg here????
                 pushToStdout(`${rawCommand}: command not found`)
             } else {
-                const cmd = commands[command]
+                const cmd = my_commands[command]
                 const res = await cmd.fn(...args)
 
                 pushToStdout(res)
@@ -283,12 +284,12 @@ export default function Terminal(props) {
     }
 
     const handleInput = event => {
-        const historyOptions = {
-            history,
-            historyPosition,
-            previousHistoryPosition,
-            terminalInput: promptRef
-        }
+        // const historyOptions = {
+        //     history,
+        //     historyPosition,
+        //     //previousHistoryPosition,
+        //     terminalInput: promptRef
+        // }
         switch (event.key) {
             case 'Enter':
                 processCommand();
@@ -300,13 +301,13 @@ export default function Terminal(props) {
             //     scrollHistory('down', historyOptions)
             //     break
             default:
+                return historyPosition; //todo: remove this line
         }
     }
 
     // Process commands and focus terminal on load
     useEffect(() => {
-        if (!isActive) {
-            const message = `
+        const message = `
  +--------------------------------------------------------------
  | Welcome advocate to the ETIO.ventures IntraPlaNet
  +--------------------------------------------------------------
@@ -323,11 +324,11 @@ export default function Terminal(props) {
  | "connect" or type "help" to see all commands available.
  +--------------------------------------------------------------
 `
-            pushToStdout(message)
-        }
-        setCommands(my_commands)
+        pushToStdout(message)
+
+        // setCommands(my_commands)
         promptRef.current.focus();
-    }, [])
+    }, [pushToStdout])
 
     useEffect(() => {
         return account ? setPS1(`${account} @ [advocate: TIER 0] ☤ $`) : setPS1('0x0000000000000000000000000000000000000000 @ [undisclosed] ☤ $')
