@@ -15,7 +15,24 @@
     "sass": "^1.49.9",
     "validator": "^13.7.0",
     "web-vitals": "^2.1.4",
-    "web3": "^1.7.1"
+    "web3": "^1.7.1",
+    "@headlessui/react": "^1.5.0",
+    "@heroicons/react": "^1.0.5",
+    "@tailwindcss/forms": "^0.4.0",
+    "assert": "^2.0.0",
+    "autoprefixer": "^10.4.2",
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.0",
+    "https-browserify": "^1.0.0",
+    "os-browserify": "^0.3.0",
+    "postcss": "^8.4.7",
+    "process": "^0.11.10",
+    "react-app-rewired": "^2.2.1",
+    "react-router": "^6.2.1",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
+    "tailwindcss": "^3.0.23",
+    "url": "^0.11.0"
   },
   "scripts": {
     "start": "react-app-rewired start",
@@ -43,22 +60,5 @@
     ]
   },
   "devDependencies": {
-    "@headlessui/react": "^1.5.0",
-    "@heroicons/react": "^1.0.5",
-    "@tailwindcss/forms": "^0.4.0",
-    "assert": "^2.0.0",
-    "autoprefixer": "^10.4.2",
-    "buffer": "^6.0.3",
-    "crypto-browserify": "^3.12.0",
-    "https-browserify": "^1.0.0",
-    "os-browserify": "^0.3.0",
-    "postcss": "^8.4.7",
-    "process": "^0.11.10",
-    "react-app-rewired": "^2.2.1",
-    "react-router": "^6.2.1",
-    "stream-browserify": "^3.0.0",
-    "stream-http": "^3.2.0",
-    "tailwindcss": "^3.0.23",
-    "url": "^0.11.0"
   }
 }
