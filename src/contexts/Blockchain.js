@@ -7,16 +7,14 @@ import {useWeb3React} from "@web3-react/core";
 export const BlockchainContext = React.createContext(null)
 
 export const BlockchainProvider = ({children}) => {
-
-//    const {activate, account, library, connector, active, deactivate} = useWeb3React()
-    const {activate, account, active, deactivate} = useWeb3React()
+    const {activate, account, library, connector, active, deactivate} = useWeb3React()
 
     const [isActive, setIsActive] = useState(false)
     const [shouldDisable, setShouldDisable] = useState(false) // Should disable connect button while connecting to MetaMask
-    // const [isLoading, setIsLoading] = useState(true)
-    //
-    // const [balance, setBalance] = useState(0)
-    // const [tokens, setTokens] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
+
+    const [balance, setBalance] = useState(0)
+    const [tokens, setTokens] = useState([])
 
     // Check when App is Connected or Disconnected to MetaMask
     const handleIsActive = useCallback(() => {
@@ -35,7 +33,6 @@ export const BlockchainProvider = ({children}) => {
     const injectedConnector = (new InjectedConnector({supportedChainIds: [1, 42161, 421611, 31337]}))
 
     // Connect to MetaMask wallet
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     const connect = async () => {
         console.log('Connecting to MetaMask...')
         setShouldDisable(true)
@@ -49,7 +46,6 @@ export const BlockchainProvider = ({children}) => {
     }
 
     // Disconnect from Metamask wallet
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     const disconnect = async () => {
         console.log('Disconnecting wallet from App...')
         try {
@@ -108,8 +104,8 @@ export const BlockchainProvider = ({children}) => {
         () => ({
             // info
             account,
-            // balance,
-            // tokens,
+            balance,
+            tokens,
 
             // functions
             connect,
@@ -117,15 +113,14 @@ export const BlockchainProvider = ({children}) => {
 
             // status
             isActive,
- //           isLoading,
+            isLoading,
             shouldDisable,
 
             // helpers
             // fetchTokens,
             // fetchBalance
 
-//        }), [account, balance, tokens, isActive, isLoading, shouldDisable]
-        }), [account, connect, disconnect, isActive, shouldDisable]
+        }), [account, balance, tokens, isActive, isLoading, shouldDisable]
     ) // For some reason you don't need to inject functions as dependencies???
 
     return <BlockchainContext.Provider value={exportable}>{children}</BlockchainContext.Provider>

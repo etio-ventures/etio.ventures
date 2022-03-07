@@ -1,11 +1,11 @@
-const stdout = () => {
+export default stdout => {
   const parsedStdout = []
 
   for (let i = 0; i < stdout.length; i++) {
     const currentLine = stdout[i]
     const { message, isEcho } = currentLine
 
-    const messageText = (message)
+    const messageText = message;
 
     // Do not parse echoes (Raw inputs)
     const parsed = !isEcho && /\n|\\n/g.test(messageText) ? messageText.split(/\n|\\n/g) : [message]
@@ -17,5 +17,3 @@ const stdout = () => {
 
   return parsedStdout
 }
-
-export default stdout();

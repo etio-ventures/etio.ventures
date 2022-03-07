@@ -1,4 +1,4 @@
-const commandExists = (commands, commandName, matchCaseInsensitive) => {
+export default (commands, commandName, matchCaseInsensitive) => {
   /* istanbul ignore next: Covered by interactivity tests */
   if (matchCaseInsensitive) {
     for (const command of Object.keys(commands)) {
@@ -23,5 +23,3 @@ const commandExists = (commands, commandName, matchCaseInsensitive) => {
     }
   }
 }
-
-export default commandExists;
