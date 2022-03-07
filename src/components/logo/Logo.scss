@@ -1,0 +1,252 @@
+/* Used for etio svg */
+
+.logo {
+  @apply text-primary;
+}
+
+@keyframes logo-letter-e-top-forward {
+  0% {
+    transform: translate(33%);
+  }
+  100% {
+    transform: translate(0rem);
+  }
+}
+
+@keyframes logo-letter-e-middle-forward {
+  0% {
+    transform: translate(36%);
+  }
+  100% {
+    transform: translate(0rem);
+  }
+}
+
+@keyframes logo-letter-e-bottom-forward {
+  0% {
+    transform: translate(33%);
+  }
+  100% {
+    transform: translate(0rem);
+  }
+}
+
+@keyframes logo-rectangle-1-forward {
+  0% {
+    transform: translate(0rem, 20rem);
+  }
+  100% {
+    transform: translate(0rem);
+  }
+}
+
+@keyframes logo-rectangle-2-forward {
+  0% {
+    transform: translate(0rem, -20rem);
+  }
+  100% {
+    transform: translate(0rem);
+  }
+}
+
+@keyframes logo-rectangle-3-forward {
+  0% {
+    transform: translate(-20rem);
+  }
+  100% {
+    transform: translate(0rem);
+  }
+}
+
+@keyframes logo-dot-1-forward {
+  0% {
+    transform: translate(0rem, -20rem);
+  }
+  100% {
+    transform: translate(0rem, 0rem);
+  }
+}
+
+@keyframes logo-circle-1-forward {
+  0% {
+    transform: translate(20rem);
+  }
+  100% {
+    transform: translate(0rem);
+  }
+}
+
+
+@keyframes logo-letter-e-top-reverse {
+  0% {
+    transform: translate(0rem);
+  }
+  100% {
+    transform: translate(33%);
+  }
+}
+
+@keyframes logo-letter-e-middle-reverse {
+  0% {
+    transform: translate(0rem);
+  }
+  100% {
+    transform: translate(36%);
+  }
+}
+
+@keyframes logo-letter-e-bottom-reverse {
+  0% {
+    transform: translate(0rem);
+  }
+  100% {
+    transform: translate(33%);
+  }
+}
+
+@keyframes logo-rectangle-1-reverse {
+  0% {
+    transform: translate(0rem);
+  }
+  100% {
+    transform: translate(0rem, -20rem);
+  }
+}
+
+@keyframes logo-rectangle-2-reverse {
+  0% {
+    transform: translate(0rem);
+  }
+  100% {
+    transform: translate(0rem, 20rem);
+  }
+
+}
+
+@keyframes logo-rectangle-3-reverse {
+  0% {
+    transform: translate(0rem);
+  }
+  100% {
+    transform: translate(20rem);
+  }
+}
+
+@keyframes logo-dot-1-reverse {
+  0% {
+    transform: translate(0rem, 0rem);
+  }
+  100% {
+    transform: translate(0rem, 20rem);
+  }
+}
+
+@keyframes logo-circle-1-reverse {
+  0% {
+    transform: translate(0rem);
+  }
+  100% {
+    transform: translate(20rem);
+  }
+}
+
+.slow {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.really-slow {
+  animation-duration: 1.25s;
+  animation-fill-mode: both;
+}
+
+.fast {
+  animation-duration: 0.75s;
+  animation-fill-mode: both;
+}
+
+.logo {
+  @extend .slow;
+
+  .letter-e-top {
+    animation-name: logo-letter-e-top-forward;
+    @extend .fast;
+  }
+
+  .letter-e-middle {
+    animation-name: logo-letter-e-middle-forward;
+    @extend .slow;
+  }
+
+  .letter-e-bottom {
+    animation-name: logo-letter-e-bottom-forward;
+    @extend .fast;
+  }
+
+  .rectangle-1 {
+    animation-name: logo-rectangle-1-forward;
+    @extend .slow;
+  }
+
+  .rectangle-2 {
+    animation-name: logo-rectangle-2-forward;
+    @extend .slow;
+  }
+
+  .rectangle-3 {
+    animation-name: logo-rectangle-3-forward;
+    @extend .slow;
+  }
+
+  .dot-1 {
+    animation-name: logo-dot-1-forward;
+    @extend .slow;
+  }
+
+  .circle-1 {
+    animation-name: logo-circle-1-forward;
+    @extend .slow;
+  }
+
+  &:hover {
+    .letter-e-top {
+      animation-name: logo-letter-e-top-reverse;
+      @extend .slow;
+    }
+
+    .letter-e-middle {
+      animation-name: logo-letter-e-middle-reverse;
+      @extend .fast;
+    }
+
+    .letter-e-bottom {
+      animation-name: logo-letter-e-bottom-reverse;
+      @extend .slow;
+    }
+
+    .rectangle-1 {
+      animation-name: logo-rectangle-1-reverse;
+      @extend .slow;
+    }
+
+    .rectangle-2 {
+      animation-name: logo-rectangle-2-reverse;
+      @extend .slow;
+    }
+
+    .rectangle-3 {
+      animation-name: logo-rectangle-3-reverse;
+      @extend .slow;
+    }
+
+    .dot-1 {
+      animation-name: logo-dot-1-reverse;
+      @extend .slow;
+    }
+
+    .circle-1 {
+      animation-name: logo-circle-1-reverse;
+      @extend .slow;
+    }
+  }
+}

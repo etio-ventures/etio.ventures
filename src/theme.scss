@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Flow+Circular&family=Libre+Barcode+128&family=Libre+Barcode+128+Text&family=Noto+Sans+JP:wght@400;900&family=Permanent+Marker&family=Press+Start+2P&family=Redacted&family=Rock+Salt&family=Rubik:ital,wght@1,500;1,900&family=Sedgwick+Ave+Display&family=Share+Tech+Mono&display=swap');
+
+#theme-container {
+  @apply bg-white text-black;
+}
+
+.font-permanent-marker {
+  font-family: 'Permanent Marker', cursive;
+}
+
+.font-flow-circular {
+  font-family: 'Flow Circular', cursive;
+}
+
+.font-libre-barcode-128 {
+  font-family: 'Libre Barcode 128', cursive;
+}
+
+.font-libre-barcode-128-text {
+  font-family: 'Libre Barcode 128 Text', cursive;
+}
+
+.font-noto-sans-jp {
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.font-press-start-2p {
+  font-family: 'Press Start 2P', cursive;
+}
+
+.font-redacted {
+  font-family: 'Redacted', cursive;
+}
+
+.font-rock-salt {
+  font-family: 'Rock Salt', cursive;
+}
+
+.font-rubik {
+  font-family: 'Rubik', sans-serif;
+}
+
+.font-sedgwick-ave-display {
+  font-family: 'Sedgwick Ave Display', cursive;
+}
+
+.font-share-tech-mono {
+  font-family: 'Share Tech Mono', monospace;
+}

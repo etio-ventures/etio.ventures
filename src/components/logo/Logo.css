@@ -1,0 +1,196 @@
+/* Used for etio svg */
+.logo {
+  @apply text-primary;
+}
+
+@keyframes logo-letter-e-top-forward {
+  0% {
+    transform: translate(33%);
+  }
+  100% {
+    transform: translate(0rem);
+  }
+}
+@keyframes logo-letter-e-middle-forward {
+  0% {
+    transform: translate(36%);
+  }
+  100% {
+    transform: translate(0rem);
+  }
+}
+@keyframes logo-letter-e-bottom-forward {
+  0% {
+    transform: translate(33%);
+  }
+  100% {
+    transform: translate(0rem);
+  }
+}
+@keyframes logo-rectangle-1-forward {
+  0% {
+    transform: translate(0rem, 20rem);
+  }
+  100% {
+    transform: translate(0rem);
+  }
+}
+@keyframes logo-rectangle-2-forward {
+  0% {
+    transform: translate(0rem, -20rem);
+  }
+  100% {
+    transform: translate(0rem);
+  }
+}
+@keyframes logo-rectangle-3-forward {
+  0% {
+    transform: translate(-20rem);
+  }
+  100% {
+    transform: translate(0rem);
+  }
+}
+@keyframes logo-dot-1-forward {
+  0% {
+    transform: translate(0rem, -20rem);
+  }
+  100% {
+    transform: translate(0rem, 0rem);
+  }
+}
+@keyframes logo-circle-1-forward {
+  0% {
+    transform: translate(20rem);
+  }
+  100% {
+    transform: translate(0rem);
+  }
+}
+@keyframes logo-letter-e-top-reverse {
+  0% {
+    transform: translate(0rem);
+  }
+  100% {
+    transform: translate(33%);
+  }
+}
+@keyframes logo-letter-e-middle-reverse {
+  0% {
+    transform: translate(0rem);
+  }
+  100% {
+    transform: translate(36%);
+  }
+}
+@keyframes logo-letter-e-bottom-reverse {
+  0% {
+    transform: translate(0rem);
+  }
+  100% {
+    transform: translate(33%);
+  }
+}
+@keyframes logo-rectangle-1-reverse {
+  0% {
+    transform: translate(0rem);
+  }
+  100% {
+    transform: translate(0rem, -20rem);
+  }
+}
+@keyframes logo-rectangle-2-reverse {
+  0% {
+    transform: translate(0rem);
+  }
+  100% {
+    transform: translate(0rem, 20rem);
+  }
+}
+@keyframes logo-rectangle-3-reverse {
+  0% {
+    transform: translate(0rem);
+  }
+  100% {
+    transform: translate(20rem);
+  }
+}
+@keyframes logo-dot-1-reverse {
+  0% {
+    transform: translate(0rem, 0rem);
+  }
+  100% {
+    transform: translate(0rem, 20rem);
+  }
+}
+@keyframes logo-circle-1-reverse {
+  0% {
+    transform: translate(0rem);
+  }
+  100% {
+    transform: translate(20rem);
+  }
+}
+.slow, .logo:hover .circle-1, .logo:hover .dot-1, .logo:hover .rectangle-3, .logo:hover .rectangle-2, .logo:hover .rectangle-1, .logo:hover .letter-e-bottom, .logo:hover .letter-e-top, .logo .circle-1, .logo .dot-1, .logo .rectangle-3, .logo .rectangle-2, .logo .rectangle-1, .logo .letter-e-middle, .logo {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.really-slow {
+  animation-duration: 1.25s;
+  animation-fill-mode: both;
+}
+
+.fast, .logo:hover .letter-e-middle, .logo .letter-e-bottom, .logo .letter-e-top {
+  animation-duration: 0.75s;
+  animation-fill-mode: both;
+}
+
+.logo .letter-e-top {
+  animation-name: logo-letter-e-top-forward;
+}
+.logo .letter-e-middle {
+  animation-name: logo-letter-e-middle-forward;
+}
+.logo .letter-e-bottom {
+  animation-name: logo-letter-e-bottom-forward;
+}
+.logo .rectangle-1 {
+  animation-name: logo-rectangle-1-forward;
+}
+.logo .rectangle-2 {
+  animation-name: logo-rectangle-2-forward;
+}
+.logo .rectangle-3 {
+  animation-name: logo-rectangle-3-forward;
+}
+.logo .dot-1 {
+  animation-name: logo-dot-1-forward;
+}
+.logo .circle-1 {
+  animation-name: logo-circle-1-forward;
+}
+.logo:hover .letter-e-top {
+  animation-name: logo-letter-e-top-reverse;
+}
+.logo:hover .letter-e-middle {
+  animation-name: logo-letter-e-middle-reverse;
+}
+.logo:hover .letter-e-bottom {
+  animation-name: logo-letter-e-bottom-reverse;
+}
+.logo:hover .rectangle-1 {
+  animation-name: logo-rectangle-1-reverse;
+}
+.logo:hover .rectangle-2 {
+  animation-name: logo-rectangle-2-reverse;
+}
+.logo:hover .rectangle-3 {
+  animation-name: logo-rectangle-3-reverse;
+}
+.logo:hover .dot-1 {
+  animation-name: logo-dot-1-reverse;
+}
+.logo:hover .circle-1 {
+  animation-name: logo-circle-1-reverse;
+}
