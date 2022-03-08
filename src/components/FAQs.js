@@ -1,5 +1,3 @@
-import {Link} from "react-router-dom";
-
 const faqs = [
     {
         question: "Where do you operate?",
@@ -13,7 +11,7 @@ const faqs = [
         answer:
             `The prefix 'etio' refers to the cause or origin. 
             We chose this because it represents a catalyst for change. 
-            Please refer to our ${(<Link to={"/about-us"}>About Us</Link>)} page for more details.`
+            Please refer to our About Us page for more details.`
     },
     {
         question: "How long have you been in operation?",

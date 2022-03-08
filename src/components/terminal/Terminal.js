@@ -84,17 +84,17 @@ export default function Terminal(props) {
                 // eslint-disable-next-line no-restricted-globals
                 if (!confirm(confirm_this)) {
                     return pushToStdout(`
-+-------------------------------------------------------------
-| *** EMAIL REQUEST DENIED ***
-| 
-| Your contact information has not been saved.
-| Here at ETIO Ventures, we believe in your right to privacy.
-|
-| All records of this confirmation question will be deleted.
-| All employees viewing this screen will be terminated immediately.
-|
-| Thank you for your support.
-+-------------------------------------------------------------
+ +-------------------------------------------------------------
+ | *** EMAIL REQUEST DENIED ***
+ |  
+ | Your contact information has not been saved.
+ | Here at ETIO Ventures, we believe in your right to privacy.
+ |
+ | All records of this confirmation question will be deleted.
+ | All employees viewing this screen will be terminated immediately.
+ |
+ | Thank you for your support.
+ +-------------------------------------------------------------
 `)
                 }
 
@@ -104,15 +104,15 @@ export default function Terminal(props) {
                         email: args[0] // This is horribly hacky
                     });
                     pushToStdout(`
-+-------------------------------------------------------------------------------
-| *** EMAIL SUCCESSFULLY SAVED *** 
-| Thank you. We will contact you when interplanetary passports are available.
-| Please avoid any planet-wide extinction level events in the mean time as
-| this creates a lot of extra work for our corporate representatives.
-|
-| If you have any questions, or would like to speak to on of our representatives,
-| please type "representative" and a live representative will assist you shortly.
-+--------------------------------------------------------------------------------
+ +-------------------------------------------------------------------------------
+ | *** EMAIL SUCCESSFULLY SAVED *** 
+ | Thank you. We will contact you when interplanetary passports are available.
+ | Please avoid any planet-wide extinction level events in the mean time as
+ | this creates a lot of extra work for our corporate representatives.
+ |
+ | If you have any questions, or would like to speak to on of our representatives,
+ | please type "representative" and a live representative will assist you shortly.
+ +--------------------------------------------------------------------------------
 `)
                     console.log("I'm not collecting your metamask address, as I don't want to send it to Google.")
                 } catch (e) {
@@ -144,8 +144,7 @@ export default function Terminal(props) {
             },
         },
         passport: {
-            description: `Receive your ETIO sponsored advocate passport for interplanetary travel. 
- |                      *** NOTE: (By requesting a passport you consent to being contacted by a live representative to answer for irregularities in your work history.)`,
+            description: `Receive your ETIO sponsored advocate passport for interplanetary travel.`,
             usage: 'passport',
             fn: async (...args) => {
                 const message = `
@@ -295,12 +294,6 @@ export default function Terminal(props) {
  | Welcome, Advocate to the ETIO Network
  | CONNECTED FROM: [undisclosed]
  +--------------------------------------------------------------            
- |  mmmmmmmmmmmmm mmmmm   mmmm 
- |  #        #      #    m"  "m
- |  #mmmmm   #      #    #    #
- |  #        #      #    #    #
- |  #mmmmm   #    mm#mm   #mm#  .network 
- +--------------------------------------------------------------
  | Please connect to your corporate advocacy account by typing
  | "connect" or type "help" to see all commands available.
  +--------------------------------------------------------------
@@ -322,7 +315,7 @@ export default function Terminal(props) {
     }, [account])
 
     return (
-        <pre className="terminal container" onClick={focusTerminal}>
+        <div className="terminal container" onClick={focusTerminal}>
             <div ref={contentRef} className="terminal content">
                 {getStdOut()}
                 <div className="terminal input-group">
@@ -331,6 +324,6 @@ export default function Terminal(props) {
                            autoComplete='off' type='text'/>
                 </div>
             </div>
-        </pre>
+        </div>
     )
 }
