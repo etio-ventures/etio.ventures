@@ -310,8 +310,35 @@ export default function Terminal(props) {
         promptRef.current.focus();
     }, [])
 
+    const [width, setWidth] = useState(window.innerWidth);
+
+    function handleWindowSizeChange() {
+        setWidth(window.innerWidth);
+    }
     useEffect(() => {
-        return account ? setPS1(`${account} @ [advocate: TIER 0] $`) : setPS1('0x0000000000000000000000000000000000000000 @ [undisclosed] $')
+        window.addEventListener('resize', handleWindowSizeChange);
+        return () => {
+            window.removeEventListener('resize', handleWindowSizeChange);
+        }
+    }, []);
+
+    const isMobile = width <= 768;
+
+    const shorten = (str) => {
+        if (typeof (str) === 'undefined') {
+            return 'Sign In';
+        }
+        let s = str.toString()
+        return s.length > 4 ? s.substring(0, 4) + '..' + s.substring(s.length - 4, s.length) : s;
+    }
+
+    useEffect(() => {
+        let display = account ? account : '0x0000000000000000000000000000000000000000';
+        if (isMobile) {
+            display = shorten(display);
+            return account ? setPS1(`${display} @ [advocate: TIER 0] $`) : setPS1(`${display} @ [undisclosed] $`)
+        }
+        return account ? setPS1(`${display} @ [advocate: TIER 0] $`) : setPS1(`${display} @ [undisclosed] $`)
     }, [account])
 
     return (
