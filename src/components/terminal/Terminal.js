@@ -255,7 +255,8 @@ export default function Terminal(props) {
             commandResult.command = rawCommand
             commandResult.args = args
 
-            const {exists, command} = commandExists(commands, rawCommand, props.ignoreCommandCase)
+            //const {exists, command} = commandExists(commands, rawCommand, props.ignoreCommandCase)
+            const {exists, command} = commandExists(commands, rawCommand, true)
 
             if (!exists) {
                 //todo: Do I need a second arg here????
@@ -336,7 +337,7 @@ export default function Terminal(props) {
         let display = account ? account : '0x0000000000000000000000000000000000000000';
         if (isMobile) {
             display = shorten(display);
-            return account ? setPS1(`${display} @ [advocate: TIER 0] $`) : setPS1(`${display} @ [undisclosed] $`)
+            return account ? setPS1(`${display} $`) : setPS1(`${display} $`)
         }
         return account ? setPS1(`${display} @ [advocate: TIER 0] $`) : setPS1(`${display} @ [undisclosed] $`)
     }, [account])
