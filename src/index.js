@@ -8,7 +8,6 @@ import Web3 from "web3";
 import './index.css';
 import Home from "./pages/Home";
 import Terminal from "./components/terminal/Terminal";
-import Theme from "./pages/Theme";
 import AboutUs from "./pages/AboutUs";
 
 function getLibrary(provider, connector) {
@@ -24,7 +23,6 @@ ReactDOM.render(
                         <Route exact path="/" element={<Home/>}/>
                         <Route exact path="/about-us" element={<AboutUs/>}/>
                         <Route exact path="/terminal" element={<Terminal/>}/>
-                        <Route exact path="/theme" element={<Theme/>}/>
                     </Routes>
                 </BrowserRouter>
             </BlockchainProvider>
