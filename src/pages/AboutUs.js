@@ -44,7 +44,7 @@ export default function AboutUs() {
                             <li>Healthcare and Social Assistance</li>
                             <li>Information</li>
                             <li>Manufacturing</li>
-                            <li>Mining (secular and non-secular)</li>
+                            <li>Mining</li>
                             <li>Other Services</li>
                             <li>Professional, Scientific and Technical Services</li>
                             <li>Real Estate and Rental and Leasing</li>
